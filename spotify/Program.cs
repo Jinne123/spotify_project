@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StringManipulation
+namespace spotify
 {
     class Program
     {
