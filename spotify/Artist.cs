@@ -6,18 +6,63 @@ using System.Threading.Tasks;
 
 namespace spotify
 {
-    internal class Artist
+    internal class Artist : Person
     {
-        public string name;
+        private bool isArtist;
+        public List<Song> songs;
+        public List<Album> albums;
+        
+        public bool IsArtist
+        {
+            get { return this.isArtist; }
+        }
+        public Artist(string name, string email, bool isAtist) : base(name, email)
+        {
+            this.isArtist = isAtist;
+            this.songs = new List<Song>();
+            this.albums = new List<Album>();
+        }
+        public void addSong(Song song)
+        {
+            this.songs.Add(song);
+        }
+        public void removeSong(Song song)
+        {
+            this.songs.Remove(song);
+        }
+        public void addAlbum(Album album)
+        {
+            this.albums.Add(album);
+        }
+        public void removeAlbum(Album album)
+        {
+            this.albums.Remove(album);
+        }
+        public void printSongs()
+        {
+            Console.WriteLine("Songs of " + this.Name + ":");
+            foreach (Song song in this.songs)
+            {
+                Console.WriteLine(song.Title);
+            }
+        }
+        public void printAlbums()
+        {
+            Console.WriteLine("Albums of " + this.Name + ":");
+            foreach (Album album in this.albums)
+            {
+                Console.WriteLine(album.Title);
+            }
+        }
 
-        public string Name
+        public int getSongCount(List<Song> songs)
         {
-            get { return this.name; }
-            set { this.name = value; }
+            return songs.Count;
         }
-        public Artist(string name)
+        public int getAlbumCount(List<Album> albums)
         {
-            Name = name;
+            return albums.Count;
         }
+        
     }
 }

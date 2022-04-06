@@ -8,28 +8,49 @@ namespace spotify
 {
     internal class Album
     {
-        public string Description;
-        public string Title;
-        public string Genre;
-        public string ReleaseDate;
-        public Artist artist;
-
+        private string description;
+        public string Description
+        {
+            get { return this.description; }
+            set { this.description = value; }
+        }
+        private string title;
+        public string Title
+        {
+            get { return this.title; }
+            set { this.title = value; }
+        }
+        private string genre;
+        public string Genre
+        {
+            get { return this.genre; }
+            set { this.genre = value; }
+        }
+        private string releaseDate;
+        public string ReleaseDate
+        {
+            get { return this.releaseDate; }
+            set { this.releaseDate = value; }
+        }
+        private Artist artist;
+        private List<Song> songs;
         public Album(string title, string genre, string releaseDate, string description, Artist artist)
         {
             this.artist = artist;
-            this.Title = title;
-            this.Genre = genre;
-            this.ReleaseDate = releaseDate;
-            this.Description = description;
+            this.title = title;
+            this.genre = genre;
+            this.releaseDate = releaseDate;
+            this.description = description;
+            this.songs = new List<Song>();
         }
 
-        /* public Album(string title, string artist, string genre, string releaseDate, string description)
-         {
-             Title = title;
-             Artist = artist;
-             Genre = genre;
-             ReleaseDate = releaseDate;
-             Description = description;
-         }*/
+        public void addSong(Song song)
+        {
+            this.songs.Add(song);
+        }
+        public void removeSong(Song song)
+        {
+            this.songs.Remove(song);
+        }
     }
 }

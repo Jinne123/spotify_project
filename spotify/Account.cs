@@ -8,51 +8,35 @@ namespace spotify
 {
     internal class Person
     {
-        public string Name;
-        public string Email;
-        public List<Friend> friends;
-        public List<Song> songs;
-        public List<Album> albums;
-        public List<Playlist> playlists;
+        private string name;
+        public string Name { get { return this.name; } set { this.name = value; } }
+        private string email;
+        public string Email { get { return this.email; } set { this.email = value; } }
+        private List<Person> friends;
+        public List<Person> Friends { get { return this.friends; } set { this.friends = value; } }
+        private List<Playlist> playlists;
+        public List<Playlist> Playlists { get { return this.playlists; } set { this.playlists = value; } }
         /*        public List<Song> favSongs;
                 public List<Album> favAlbums;
                 public List<Playlist> favPlaylists;     */
         public Person(string name, string email)
         {
-            this.Name = name;
-            this.Email = email;
-            this.friends = new List<Friend>();
-            this.songs = new List<Song>();
-            this.albums = new List<Album>();
+            this.name = name;
+            this.email = email;
+            this.friends = new List<Person>();
             this.playlists = new List<Playlist>();
         }
-        public void addFriend(Friend friend)
+        public void addFriend(Person friend)
         {
             this.friends.Add(friend);
-        }
-        public void addSong(Song song)
-        {
-            this.songs.Add(song);
-        }
-        public void addAlbum(Album album)
-        {
-            this.albums.Add(album);
         }
         public void addPlaylist(Playlist playlist)
         {
             this.playlists.Add(playlist);
         }
-        public void removeFriend(Friend friend)
+        public void removeFriend(Person friend)
         {
             this.friends.Remove(friend);
-        }
-        public void removeSong(Song song)
-        {
-            this.songs.Remove(song);
-        }
-        public void removeAlbum(Album album)
-        {
-            this.albums.Remove(album);
         }
         public void removePlaylist(Playlist playlist)
         {
@@ -60,31 +44,15 @@ namespace spotify
         }
         public void printFriends()
         {
-            Console.WriteLine("Friends of " + this.Name + ":");
-            foreach (Friend friend in this.friends)
+            Console.WriteLine("Friends of " + this.name + ":");
+            foreach (Person friend in this.friends)
             {
-                Console.WriteLine(friend.Name);
-            }
-        }
-        public void printSongs()
-        {
-            Console.WriteLine("Songs of " + this.Name + ":");
-            foreach (Song song in this.songs)
-            {
-                Console.WriteLine(song.Name);
-            }
-        }
-        public void printAlbums()
-        {
-            Console.WriteLine("Albums of " + this.Name + ":");
-            foreach (Album album in this.albums)
-            {
-                Console.WriteLine(album.Name);
+                Console.WriteLine(friend.name);
             }
         }
         public void printPlaylists()
         {
-            Console.WriteLine("Playlists of " + this.Name + ":");
+            Console.WriteLine("Playlists of " + this.name + ":");
             foreach (Playlist playlist in this.playlists)
             {
                 Console.WriteLine(playlist.Name);
@@ -92,8 +60,8 @@ namespace spotify
         }
         
     }
-    internal class Friend
+/*    internal class Friend
     {
         
-    }
+    }*/
 }
