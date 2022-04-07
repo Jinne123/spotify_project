@@ -52,5 +52,17 @@ namespace spotify
         {
             this.songs.Remove(song);
         }
+        public List<Song> getSongs()
+        {
+            return this.songs;
+        }
+        public Artist getArtist()
+        {
+            return this.artist;
+        }
+        public override string ToString()
+        {
+            return this.title;
+        }
     }
 }

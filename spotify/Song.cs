@@ -13,11 +13,6 @@ namespace spotify
         {
             get { return this.title; }
         }
-        private string artist;
-        public string Artist
-        {
-            get { return this.artist; }
-        }
         private int duration;
         public int Duration
         {
@@ -28,14 +23,23 @@ namespace spotify
         {
             get { return this.genre; }
         }
-
-        public Song(string title, string artist, int duration, string genre)
+        private Artist artist;
+        public Artist Artist
+        {
+            get { return this.artist; }
+        }
+        
+        public Song(string title, int duration, string genre, Artist artist)
         {
             this.title = title;
             this.artist = artist;
             this.duration = duration;
             this.genre = genre;
         }
-        
+
+        public override string ToString()
+        {
+            return this.title + " - " + this.artist.Name + " - " + this.duration + " - " + this.genre;
+        }
     }
 }

@@ -6,19 +6,20 @@ using System.Threading.Tasks;
 
 namespace spotify
 {
-    internal class Artist : Person
+    internal class Artist
     {
-        private bool isArtist;
+        private string name;
+        public string Name 
+        {
+            get { return this.name; }
+            set { this.name = value; }
+        }
         public List<Song> songs;
         public List<Album> albums;
-        
-        public bool IsArtist
+     
+        public Artist(string name, bool isAtist)
         {
-            get { return this.isArtist; }
-        }
-        public Artist(string name, string email, bool isAtist) : base(name, email)
-        {
-            this.isArtist = isAtist;
+            this.name = name;
             this.songs = new List<Song>();
             this.albums = new List<Album>();
         }
