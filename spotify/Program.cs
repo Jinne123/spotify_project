@@ -2,7 +2,7 @@
 
 namespace spotify
 {
-    class Program
+    class Player
     {
         static void Main(string[] args)
         {

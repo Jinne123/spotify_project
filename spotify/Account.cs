@@ -8,24 +8,37 @@ namespace spotify
 {
     internal class Person
     {
-        private string name;
-        public string Name { get { return this.name; } set { this.name = value; } }
-        private string email;
-        public string Email { get { return this.email; } set { this.email = value; } }
-        private List<Person> friends;
-        public List<Person> Friends { get { return this.friends; } set { this.friends = value; } }
-        private List<Playlist> playlists;
-        public List<Playlist> Playlists { get { return this.playlists; } set { this.playlists = value; } }
-        /*        public List<Song> favSongs;
-                public List<Album> favAlbums;
-                public List<Playlist> favPlaylists;     */
+        private string name { get; set; }
+        private string email { get; set; }
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+        public void setEmail(string email)
+        {
+            this.email = email;
+        }
+        public string getName()
+        {
+            return name;
+        }
+        public string getEmail()
+        {
+            return email;
+        }
+
+        private List<Person> friends { get; set; }
+        private List<Playlist> playlists { get; set; }
+
         public Person(string name, string email)
         {
             this.name = name;
             this.email = email;
-            this.friends = new List<Person>();
-            this.playlists = new List<Playlist>();
+            friends = new List<Person>();
+            playlists = new List<Playlist>();
         }
+
+
         public void addFriend(Person friend)
         {
             this.friends.Add(friend);
@@ -55,13 +68,9 @@ namespace spotify
             Console.WriteLine("Playlists of " + this.name + ":");
             foreach (Playlist playlist in this.playlists)
             {
-                Console.WriteLine(playlist.Name);
+                Console.WriteLine(playlist.getName());
             }
         }
         
     }
-/*    internal class Friend
-    {
-        
-    }*/
 }

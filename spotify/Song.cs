@@ -8,38 +8,56 @@ namespace spotify
 {
     internal class Song
     {
-        private string title;
-        public string Title
-        {
-            get { return this.title; }
-        }
-        private int duration;
-        public int Duration
-        {
-            get { return this.duration; }
-        }
-        private string genre;
-        public string Genre
-        {
-            get { return this.genre; }
-        }
-        private Artist artist;
-        public Artist Artist
-        {
-            get { return this.artist; }
-        }
-        
-        public Song(string title, int duration, string genre, Artist artist)
+        private string title { get; set; }
+        private int duration { get; set; }
+        private Artist artist { get; set; }
+        private string genre { get; set; }
+        public void setTitle(string title)
         {
             this.title = title;
-            this.artist = artist;
+        }
+        public void setDuration(int duration)
+        {
             this.duration = duration;
+        }
+        public void setArtist(Artist artist)
+        {
+            this.artist = artist;
+        }
+        public void setGenre(string genre)
+        {
+            this.genre = genre;
+        }
+        public string getTitle()
+        {
+            return this.title;
+        }
+        public int getDuration()
+        {
+            return this.duration;
+        }
+        public Artist getArtist()
+        {
+            return this.artist;
+        }
+        public string getGenre()
+        {
+            return this.genre;
+        }
+
+        public Song(string title, int duration, Artist artist, string genre)
+        {
+            this.title = title;
+            this.duration = duration;
+            this.artist = artist;
             this.genre = genre;
         }
 
+
+
         public override string ToString()
         {
-            return this.title + " - " + this.artist.Name + " - " + this.duration + " - " + this.genre;
+            return this.title + " - " + this.artist.getName() + " - " + this.duration + " - " + this.genre;
         }
     }
 }

@@ -6,36 +6,70 @@ using System.Threading.Tasks;
 
 namespace spotify
 {
-    internal class Playlist
+    internal class Playlist : Iplaybum
     {
-        private string name;
-        public string Name { get { return this.name; } set { this.name = value; } }
-        private List<Song> songs;
-        public List<Song> Songs { get { return this.songs; } set { this.songs = value; } }
-        private Person creator;
-        public Person Creator { get { return this.creator; } set { this.creator = value; } }
-        public Playlist(string name, Person creator)
+        private string name { get; set; }
+        private bool online { get; set; }
+        private List<Song> songs { get; set; }
+        private Person creator { get; set; }
+
+        public void setName(string name)
         {
             this.name = name;
-            this.creator = creator;
-            this.songs = new List<Song>();
         }
-        public void AddSong(Song song)
+        public void setOnline(bool online)
+        {
+            this.online = online;
+        }
+        public void setCreator(Person creator)
+        {
+            this.creator = creator;
+        }
+        public string getName()
+        {
+            return name;
+        }
+        public bool getOnline()
+        {
+            return online;
+        }
+        public Person getCreator()
+        {
+            return creator;
+        }
+
+        public Playlist(string name, bool online, Person creator)
+        {
+            this.name = name;
+            this.online = online;
+            this.creator = creator;
+            songs = new List<Song>();
+        }
+
+        public void addSong(Song song)
         {
             this.songs.Add(song);
         }
-        public void RemoveSong(Song song)
+        public void removeSong(Song song)
         {
             this.songs.Remove(song);
         }
-        public void PrintPlaylist()
+        public List<Song> getSongs()
+        {
+            return this.songs;
+        }
+        public object getListCreator()
+        {
+            return this.creator;
+        }
+        public void printlist()
         {
             Console.WriteLine("Playlist: " + this.name);
-            Console.WriteLine("Creator: " + this.creator.Name);
+            Console.WriteLine("Creator: " + this.creator.getName());
             Console.WriteLine("Songs: ");
             foreach (Song song in this.songs)
             {
-                Console.WriteLine(song.Title);
+                Console.WriteLine(song.getTitle());
             }
         }
         

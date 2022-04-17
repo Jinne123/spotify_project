@@ -8,21 +8,35 @@ namespace spotify
 {
     internal class Artist
     {
-        private string name;
-        public string Name 
-        {
-            get { return this.name; }
-            set { this.name = value; }
-        }
-        public List<Song> songs;
-        public List<Album> albums;
-     
-        public Artist(string name, bool isAtist)
+        private List<Song> songs { get; set; }
+        private List<Album> albums { get; set; }
+        private string name { get; set; }
+        private string email { get; set; }
+        public void setName(string name)
         {
             this.name = name;
-            this.songs = new List<Song>();
-            this.albums = new List<Album>();
         }
+        public string getName()
+        {
+            return name;
+        }
+        public void setEmail(string email)
+        {
+            this.email = email;
+        }
+        public string getEmail()
+        {
+            return email;
+        }
+        public Artist(string name, string email)
+        {
+            this.name = name;
+            this.email = email;
+            songs = new List<Song>();
+            albums = new List<Album>();
+        }
+
+
         public void addSong(Song song)
         {
             this.songs.Add(song);
@@ -41,18 +55,18 @@ namespace spotify
         }
         public void printSongs()
         {
-            Console.WriteLine("Songs of " + this.Name + ":");
+            Console.WriteLine("Songs of " + this.name + ":");
             foreach (Song song in this.songs)
             {
-                Console.WriteLine(song.Title);
+                Console.WriteLine(song.getTitle());
             }
         }
         public void printAlbums()
         {
-            Console.WriteLine("Albums of " + this.Name + ":");
+            Console.WriteLine("Albums of " + this.name + ":");
             foreach (Album album in this.albums)
             {
-                Console.WriteLine(album.Title);
+                Console.WriteLine(album.getname());
             }
         }
 
