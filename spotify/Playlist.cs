@@ -27,15 +27,15 @@ namespace spotify
         }
         public string getName()
         {
-            return name;
+            return this.name;
         }
         public bool getOnline()
         {
-            return online;
+            return this.online;
         }
         public Person getCreator()
         {
-            return creator;
+            return this.creator;
         }
 
         public Playlist(string name, bool online, Person creator)
