@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace spotify
 {
-    internal class Song
+    internal class Song : Iplayable
     {
         private string title { get; set; }
         private int duration { get; set; }
@@ -53,6 +53,26 @@ namespace spotify
             this.genre = genre;
         }
 
+        public void play()
+        {
+            Console.WriteLine("Playing " + this.title);
+        }
+        public void pause()
+        {
+            Console.WriteLine("Stopped " + this.title);
+        }
+        public void skip()
+        {
+            Console.WriteLine("Paused " + this.title);
+        }
+        public void previouse()
+        {
+            Console.WriteLine("Stopped " + this.title);
+        }
+        public void stop(bool shuffled)
+        {
+            Console.WriteLine("Stopped " + this.title);
+        }
 
 
         public override string ToString()

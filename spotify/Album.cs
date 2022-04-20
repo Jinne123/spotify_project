@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace spotify
 {
-    internal class Album : Iplaybum
+    internal class Album : Playbum
     {
         private string description { get; set; }
         private string name { get; set; }
@@ -56,7 +56,7 @@ namespace spotify
             return artist;
         }
 
-        public Album(string description, string name, string genre, string releaseDate, Artist artist)
+        public Album(int afspeeltijd, string description, string name, string genre, string releaseDate, Artist artist) : base(afspeeltijd)
         {
             this.description = description;
             this.name = name;
@@ -66,25 +66,16 @@ namespace spotify
             this.songs = new List<Song>();
         }
         
-
-        public void addSong(Song song)
-        {
-            this.songs.Add(song);
-        }
-        public void removeSong(Song song)
-        {
-            this.songs.Remove(song);
-        }
         public List<Song> getSongs()
         {
             return this.songs;
         }
-        public object getListCreator()
+        public override object getListCreator()
         {
             return this.artist;
         }
 
-        public void printlist()
+        public override void printlist()
         {
             Console.WriteLine("Album: " + this.name);
             Console.WriteLine("Description: " + this.description);

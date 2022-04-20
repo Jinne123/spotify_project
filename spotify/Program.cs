@@ -6,9 +6,9 @@ namespace spotify
     {
         static Person ik = new Person("ik", "ik@gmail.com");
         static Artist ed_sheeran = new Artist("Ed Sheeran", "edsheeran@gmail.com");
-        static Album devidedDeluxe = new Album("album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
-        static Album equals = new Album("album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
-        static Album five = new Album("album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
+        static Album devidedDeluxe = new Album(0, "album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
+        static Album equals = new Album(0, "album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
+        static Album five = new Album(0, "album", "/(deluxe)", "pop", "19-04-2022", ed_sheeran);
         static Song Castle_on_the_hill = new Song("Castle on the hill", 261, ed_sheeran, "pop");
         static Song bad_habits = new Song("Bad Habits", 230, ed_sheeran, "pop");
         static Song shivers = new Song("Shivers", 202, ed_sheeran, "pop");
@@ -19,8 +19,8 @@ namespace spotify
         static void Main(string[] args)
         {
             
-            Playlist test = new Playlist("test1", true, ik);
-            Playlist test2 = new Playlist("test2", true, ik);
+            Playlist test = new Playlist(0, "test1", true, ik);
+            Playlist test2 = new Playlist(0, "test2", true, ik);
             ik.addPlaylist(test);
             ik.addPlaylist(test2);
             ik.printPlaylists();
