@@ -53,7 +53,7 @@ namespace spotify
             this.genre = genre;
         }
 
-        public void play()
+        public void play(bool shuffled)
         {
             Console.WriteLine("Playing " + this.title);
         }
@@ -69,7 +69,7 @@ namespace spotify
         {
             Console.WriteLine("Stopped " + this.title);
         }
-        public void stop(bool shuffled)
+        public void stop()
         {
             Console.WriteLine("Stopped " + this.title);
         }

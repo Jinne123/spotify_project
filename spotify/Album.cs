@@ -13,7 +13,6 @@ namespace spotify
         private string genre { get; set; }
         private string releaseDate { get; set; }
         private Artist artist;
-        private List<Song> songs;
 
         public void setdescription(string description)
         {
@@ -66,10 +65,6 @@ namespace spotify
             this.songs = new List<Song>();
         }
         
-        public List<Song> getSongs()
-        {
-            return this.songs;
-        }
         public override object getListCreator()
         {
             return this.artist;

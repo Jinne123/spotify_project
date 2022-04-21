@@ -18,7 +18,10 @@ namespace spotify
         static Song the_city = new Song("The City", 266, ed_sheeran, "pop");
         static void Main(string[] args)
         {
-            
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.Title = "Spotify";
+
             Playlist test = new Playlist(0, "test1", true, ik);
             Playlist test2 = new Playlist(0, "test2", true, ik);
             ik.addPlaylist(test);
@@ -46,7 +49,7 @@ namespace spotify
             Console.Clear();
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1) Play something");
-            Console.WriteLine("2) playlists");
+            Console.WriteLine("2) Playlists");
             Console.WriteLine("3) Friends");
             Console.WriteLine("4) Control current music");
             Console.WriteLine("5) Exit");
@@ -90,7 +93,7 @@ namespace spotify
                     ShowPlaylists();
                     return;
                 case "2":
-                    /*SelectPlaylist();*/
+                    SelectPlaylist();
                     return;
                 case "3":
                     /*AddPlaylist();*/
@@ -104,8 +107,34 @@ namespace spotify
             }
         }
 
+        static void SelectPlaylist()
+        {
+            
+            Console.Clear();
+            Console.WriteLine("Choose an playlist by typing its number:");
+            ik.printPlaylists();
+            string input = Console.ReadLine();
+            for (int i = 0; i < ik.getPlaylistCount(); i++)
+            {
+                if (i + 1 == Int32.Parse(input))
+                {
+                   /* ik.playlists[i].printSongs();*/
+                }
+            }
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Show playlists");
+            Console.WriteLine("2) Select Playlist");
+            Console.WriteLine("3) Add Playlist");
+            Console.WriteLine("4) Remove Playlist");
+            Console.WriteLine("5) Back");
+            Console.Write("\r\nSelect an option: ");
+
+        }
+
+
         static void ShowPlaylists()
         {
+            Console.Clear();
             ik.printPlaylists();
             Console.WriteLine("\r\nPress any key to continue...");
             Console.ReadKey();

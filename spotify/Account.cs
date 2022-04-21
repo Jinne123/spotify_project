@@ -66,10 +66,16 @@ namespace spotify
         public void printPlaylists()
         {
             Console.WriteLine("Playlists of " + this.name + ":");
+            int i = 1;
             foreach (Playlist playlist in this.playlists)
             {
-                Console.WriteLine(playlist.getName());
+                Console.WriteLine(i + ") " + playlist.getName());
+                i++;
             }
+        }
+        public int getPlaylistCount()
+        {
+            return this.playlists.Count;
         }
         
     }
