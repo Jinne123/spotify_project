@@ -9,9 +9,9 @@ namespace spotify
     internal interface Iplayable
     {
         void play(bool shuffled);
+        void resume();
         void pause();
         void skip();
-        void previouse();
         void stop();
     }
 }

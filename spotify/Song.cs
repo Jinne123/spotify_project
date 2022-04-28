@@ -55,7 +55,12 @@ namespace spotify
 
         public void play(bool shuffled)
         {
+            
             Console.WriteLine("Playing " + this.title);
+        }
+        public void resume()
+        {
+            Console.WriteLine("Resuming " + this.title);
         }
         public void pause()
         {
@@ -65,13 +70,13 @@ namespace spotify
         {
             Console.WriteLine("Paused " + this.title);
         }
-        public void previouse()
-        {
-            Console.WriteLine("Stopped " + this.title);
-        }
         public void stop()
         {
             Console.WriteLine("Stopped " + this.title);
+        }
+        public void show()
+        {
+            Console.WriteLine("Playing " + this.title);
         }
 
 

@@ -20,16 +20,35 @@ namespace spotify
         }
         public string getName()
         {
-            return name;
+            return this.name;
         }
         public string getEmail()
         {
-            return email;
+            return this.email;
         }
 
         private List<Person> friends { get; set; }
         private List<Playlist> playlists { get; set; }
 
+        public List<Person> getFriend()
+        {
+            return this.friends;
+        }
+        public List<Playlist> getPlaylists()
+        {
+            return this.playlists;
+        }
+        public Playlist getPlaylist(string name)
+        {
+            foreach (Playlist p in playlists)
+            {
+                if (p.getName() == name)
+                {
+                    return p;
+                }
+            }
+            return null;
+        }
         public Person(string name, string email)
         {
             this.name = name;
@@ -38,7 +57,31 @@ namespace spotify
             playlists = new List<Playlist>();
         }
 
+        public List<Playlist> getFriendsPlaylists()
+        {
+            List<Playlist> list = new List<Playlist>();
+            foreach (Person p in friends)
+            {
+                foreach (Playlist pl in p.getPlaylists())
+                {
+                    list.Add(pl);
+                }
+            }
+            return list;
+        }
 
+        public void printFriendsPlaylists()
+        {
+            int i = 1;
+            foreach (Person p in friends)
+            {
+                foreach (Playlist pl in p.getPlaylists())
+                {
+                    Console.WriteLine(i + ") " + p.getName() + ": " + pl.getName());
+                    i++;
+                }
+            }
+        }
         public void addFriend(Person friend)
         {
             this.friends.Add(friend);
@@ -58,9 +101,11 @@ namespace spotify
         public void printFriends()
         {
             Console.WriteLine("Friends of " + this.name + ":");
+            int i = 1;
             foreach (Person friend in this.friends)
             {
-                Console.WriteLine(friend.name);
+                Console.WriteLine(i + ") " + friend.getName());
+                i++;
             }
         }
         public void printPlaylists()
@@ -72,6 +117,10 @@ namespace spotify
                 Console.WriteLine(i + ") " + playlist.getName());
                 i++;
             }
+        }
+        public void getPlaylist()
+        {
+            
         }
         public int getPlaylistCount()
         {

@@ -19,6 +19,11 @@ namespace spotify
             this.afspeeltijd = afspeeltijd;
         }
 
+        public List<Song> getSong()
+        {
+            return this.songs;
+        }
+
         public Playbum(int afspeeltijd)
         {
             this.afspeeltijd = afspeeltijd;
@@ -26,9 +31,11 @@ namespace spotify
         }
         public void getSongs()
         {
-            foreach (Song song in songs)
+            int i = 1;
+            foreach (Song song in this.songs)
             {
-                Console.WriteLine(song.getTitle());
+                Console.WriteLine(i + ") " + song.getTitle());
+                i++;
             }
         }
         public virtual object getListCreator()
@@ -43,6 +50,14 @@ namespace spotify
             }
         }
 
+        public void addPlaybum(Playbum playalbum)
+        {
+            foreach (Song song in playalbum.songs)
+            {
+                this.addSong(song);
+            }
+        }
+
         public void addSong(Song song)
         {
             this.songs.Add(song);
@@ -54,21 +69,69 @@ namespace spotify
 
         public void play(bool shuffled)
         {
-            Console.WriteLine("Playing album");
+            if (shuffled)
+            {
+                Console.Write("Playing: ");
+                int i = 0;
+                int n = this.songs.Count;
+                while (n > 1)
+                {
+                    n--;
+                    int k = new Random().Next(n + 1);
+                    Song value = this.songs[k];
+                    this.songs[k] = this.songs[n];
+                    this.songs[n] = value;
+                }
+                foreach (Song song in this.songs)
+                {
+                    if (i == 0)
+                    {
+                        Console.WriteLine(song.getTitle());
+                        Console.Write("Next: ");
+                    }
+                    else
+                    {
+                        Console.Write(song.getTitle());
+                    }
+                    i++;
+                }
+                Console.WriteLine("");
+            }
+            else 
+            {
+                Console.Write("Playing: ");
+                int i = 0;
+                foreach (Song song in this.songs)
+                {
+                    if (i == 0)
+                    {
+                        Console.WriteLine(song.getTitle());
+                        Console.Write("Next: ");
+                    }
+                    else
+                    {
+                        Console.Write(song.getTitle());
+                    }
+                    i++;
+                }
+                Console.WriteLine("");
+            }
         }
-        public void pause(){
-            Console.WriteLine("Pausing album");
+        public void pause()
+        {
+            Console.WriteLine("Pausing list");
+        }
+        public void resume()
+        {
+            Console.WriteLine("Resuming list");
         }
         public void skip()
         {
             Console.WriteLine("Skipping song");
         }
-        public void previouse()
+        public void stop()
         {
-            Console.WriteLine("Previous song");
-        }
-        public void stop(){
-            Console.WriteLine("Stopping album");
+            Console.WriteLine("Stopping list");
         }
     }
 }
